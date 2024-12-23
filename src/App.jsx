@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
+import { Container, List, Input, Button } from "./styles.js";
 
 function App() {
   const [task, setTask] = useState("");
@@ -19,20 +20,24 @@ function App() {
   }
 
   return (
-    <div>
-      <input
-        value={task}
-        onChange={inputChanged}
-        type="text"
-        placeholder="Tarefa a fazer"
-      />
-      <button onClick={buttonClicked}>Adicionar</button>
-      <ul>
-        {list.map((item) => (
-          <li key={item.id}>{item.task}</li>
-        ))}
-      </ul>
-    </div>
+    <Container>
+      <List>
+        <div>
+          <Input
+            value={task}
+            onChange={inputChanged}
+            type="text"
+            placeholder="Tarefa a fazer"
+          />
+          <Button onClick={buttonClicked}>Adicionar</Button>
+        </div>
+        <ul>
+          {list.map((item) => (
+            <li key={item.id}>{item.task}</li>
+          ))}
+        </ul>
+      </List>
+    </Container>
   );
 }
 
