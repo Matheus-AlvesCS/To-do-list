@@ -14,8 +14,16 @@ export const List = styled.main`
   padding: 30px 20px;
   border-radius: 5px;
 
-  div {
+  .addTask {
     display: flex;
+    justify-content: space-between;
+  }
+
+  ul {
+    list-style: none;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
   }
 `;
@@ -26,6 +34,7 @@ export const Input = styled.input`
   padding: 10px 20px;
   color: #000;
   font-size: 15px;
+  width: 70%;
 `;
 
 export const Button = styled.button`
@@ -44,5 +53,21 @@ export const Button = styled.button`
 
   &:active {
     opacity: 0.6;
+  }
+`;
+
+export const ListItem = styled.div`
+  background-color: ${(props) => (props.done ? "#E8FF8B" : "#E4E4E4")};
+  box-shadow: 1px 4px 10px 0px #00000033;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-radius: 5px;
+  width: 500px;
+
+  li {
+    color: #000;
+    font-size: 15px;
   }
 `;
