@@ -59,13 +59,17 @@ function App() {
           <Button onClick={buttonClicked}>Adicionar</Button>
         </div>
         <ul>
-          {list.map((item) => (
-            <ListItem key={item.id} $done={item.done}>
-              <CheckMark onClick={() => checkTask(item.id)} />
-              <li>{item.task}</li>
-              <Xmark onClick={() => deleteTask(item.id)} />
-            </ListItem>
-          ))}
+          {list.length > 0 ? (
+            list.map((item) => (
+              <ListItem key={item.id} $done={item.done}>
+                <CheckMark onClick={() => checkTask(item.id)} />
+                <li>{item.task}</li>
+                <Xmark onClick={() => deleteTask(item.id)} />
+              </ListItem>
+            ))
+          ) : (
+            <p>Não há nenhuma tarefa.</p>
+          )}
         </ul>
       </List>
     </Container>

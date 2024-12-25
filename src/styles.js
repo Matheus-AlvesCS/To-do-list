@@ -33,6 +33,12 @@ export const List = styled.main`
     display: flex;
     flex-direction: column;
     gap: 20px;
+
+    p {
+      color: #fff;
+      font-size: 20px;
+      text-align: center;
+    }
   }
 `;
 
