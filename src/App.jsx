@@ -32,9 +32,9 @@ function App() {
     const newList = list.map((item) => {
       if (item.id === id) {
         return { ...item, done: !item.done };
+      } else {
+        return item;
       }
-
-      return item;
     });
 
     setList(newList);
