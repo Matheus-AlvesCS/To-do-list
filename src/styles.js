@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { FaCheck, FaXmark } from "react-icons/fa6";
 
 export const Container = styled.div`
   background: linear-gradient(90deg, #383838 0%, #000000 81.25%);
@@ -13,6 +14,7 @@ export const List = styled.main`
   background-color: #fff;
   padding: 30px 20px;
   border-radius: 5px;
+  width: 500px;
 
   .addTask {
     display: flex;
@@ -57,17 +59,27 @@ export const Button = styled.button`
 `;
 
 export const ListItem = styled.div`
-  background-color: ${(props) => (props.done ? "#E8FF8B" : "#E4E4E4")};
+  background-color: ${({ $done }) => ($done ? "#10cb2c" : "#E4E4E4")};
+  color: ${({ $done }) => ($done ? "#fff" : "#000")};
   box-shadow: 1px 4px 10px 0px #00000033;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
   border-radius: 5px;
-  width: 500px;
 
   li {
-    color: #000;
     font-size: 15px;
+    font-weight: ${({ $done }) => ($done ? "900" : "400")};
   }
+`;
+
+export const CheckMark = styled(FaCheck)`
+  cursor: pointer;
+  font-size: 18px;
+`;
+
+export const Xmark = styled(FaXmark)`
+  cursor: pointer;
+  font-size: 18px;
 `;

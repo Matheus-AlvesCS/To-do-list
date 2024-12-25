@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
-import { FaCheck, FaXmark } from "react-icons/fa6";
-
-import { Container, List, Input, Button, ListItem } from "./styles.js";
+import {
+  Container,
+  List,
+  Input,
+  Button,
+  ListItem,
+  CheckMark,
+  Xmark,
+} from "./styles.js";
 
 function App() {
   const [task, setTask] = useState("");
-  const [list, setList] = useState([
-    { id: uuidv4(), task: "React", done: true },
-  ]);
+  const [list, setList] = useState([]);
 
   function inputChanged(event) {
     setTask(event.target.value);
@@ -20,8 +24,26 @@ function App() {
       return alert("Nenhuma tarefa digitada.");
     }
 
-    setList([...list, { id: uuidv4(), task }]);
+    setList([...list, { id: uuidv4(), task, done: false }]);
     setTask("");
+  }
+
+  function checkTask(id) {
+    const newList = list.map((item) => {
+      if (item.id === id) {
+        return { ...item, done: !item.done };
+      }
+
+      return item;
+    });
+
+    setList(newList);
+  }
+
+  function deleteTask(id) {
+    const newList = list.filter((item) => item.id !== id);
+
+    setList(newList);
   }
 
   return (
@@ -38,10 +60,10 @@ function App() {
         </div>
         <ul>
           {list.map((item) => (
-            <ListItem done={item.done}>
-              <FaCheck />
-              <li key={item.id}>{item.task}</li>
-              <FaXmark />
+            <ListItem key={item.id} $done={item.done}>
+              <CheckMark onClick={() => checkTask(item.id)} />
+              <li>{item.task}</li>
+              <Xmark onClick={() => deleteTask(item.id)} />
             </ListItem>
           ))}
         </ul>
