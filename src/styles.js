@@ -2,7 +2,11 @@ import styled from "styled-components";
 import { FaCheck, FaXmark } from "react-icons/fa6";
 
 export const Container = styled.div`
-  background: linear-gradient(90deg, #383838 0%, #000000 81.25%);
+  background-image: radial-gradient(#ffffff 2px, transparent 2px),
+    radial-gradient(#ffffff 2px, transparent 2px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+  background-color: #dc1313;
   min-height: 100dvh;
   width: 100dvw;
   display: flex;
@@ -11,7 +15,9 @@ export const Container = styled.div`
 `;
 
 export const List = styled.main`
-  background-color: #fff;
+  background-color: transparent;
+  backdrop-filter: blur(2px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
   padding: 30px 20px;
   border-radius: 5px;
   width: 500px;
@@ -40,7 +46,7 @@ export const Input = styled.input`
 `;
 
 export const Button = styled.button`
-  background-color: #8052ec;
+  background-color: #f73333;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -59,7 +65,7 @@ export const Button = styled.button`
 `;
 
 export const ListItem = styled.div`
-  background-color: ${({ $done }) => ($done ? "#10cb2c" : "#E4E4E4")};
+  background-color: ${({ $done }) => ($done ? "#10cb2c" : "#fff")};
   color: ${({ $done }) => ($done ? "#fff" : "#000")};
   box-shadow: 1px 4px 10px 0px #00000033;
   display: flex;
@@ -67,6 +73,7 @@ export const ListItem = styled.div`
   align-items: center;
   padding: 20px;
   border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
 
   li {
     font-size: 15px;
